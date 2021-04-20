@@ -15,6 +15,7 @@
 #import "NSTimer+Addition.h"
 #import "NSString+CJCategory.h"
 #import "NSDictionary+CJCategory.h"
+#import "NSArray+CJCategory.h"
 
 #import "UIColor+CJExtension.h"
 #import "CALayer+CJExtension.h"

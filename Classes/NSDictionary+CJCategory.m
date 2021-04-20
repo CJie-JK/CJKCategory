@@ -7,8 +7,26 @@
 //
 
 #import "NSDictionary+CJCategory.h"
+#import <objc/message.h>
 
 @implementation NSDictionary (CJCategory)
+
++ (void)load {
+    Method dd = class_getClassMethod(NSDictionary.class, @selector(dictionaryWithDictionary:));
+    Method ff = class_getClassMethod(NSDictionary.class, @selector(cj_dictionaryWithDictionary:));
+    //交换方法
+    method_exchangeImplementations(dd, ff);
+}
+
+//过滤掉接口返回的非字典类型数据，如"<null>"等
++ (NSDictionary *)cj_dictionaryWithDictionary:(NSDictionary *)dict {
+    if ([dict isKindOfClass:NSDictionary.class]) {
+        return [self cj_dictionaryWithDictionary:dict];
+    }
+    return [NSDictionary dictionary];
+}
+
+#pragma mark -
 
 - (NSDictionary *)dictionaryValueForKey:(NSString *)key {
     NSDictionary *dictionary = [self objectForKey:key];
