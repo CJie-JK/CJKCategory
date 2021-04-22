@@ -22,7 +22,7 @@
     if ([ary isKindOfClass:NSArray.class]) {
         return [self cj_arrayWithArray:ary];
     }
-    return [NSArray array];
+    return [self array];
 }
 
 @end

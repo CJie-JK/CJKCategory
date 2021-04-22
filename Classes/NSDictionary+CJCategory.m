@@ -23,7 +23,7 @@
     if ([dict isKindOfClass:NSDictionary.class]) {
         return [self cj_dictionaryWithDictionary:dict];
     }
-    return [NSDictionary dictionary];
+    return [self dictionary];
 }
 
 #pragma mark -
